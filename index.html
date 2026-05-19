@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <title>Confucius4-TTS Demo</title>
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        .demo-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 20px;
+        }
+        h1 { text-align: center; margin-top: 0; margin-bottom: 10px; }
+        h2 { text-align: center; margin-bottom: 20px; margin-top: 20px; }
+        .table-responsive { margin-top: 20px; }
+        .demo-table { vertical-align: middle; }
+        .demo-table th { text-align: center; vertical-align: middle; background-color: #f8f9fa; }
+        .demo-table td { text-align: center; vertical-align: middle; }
+        audio { width: 190px; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+    <div class="demo-container">
+        <div class="text-center">
+            <img src="./Confucius4-TTS.png" alt="Confucius4-TTS" style="max-width: 500px; width: 100%; height: auto; margin-bottom: 15px;">
+            <h1>Confucius4-TTS: a Multilingual and Cross-Lingual Zero-Shot TTS Engine</h1>
+            <p><b>One voice. Any language.</b></p>
+        </div>
+
+        <div class="text-center">
+            <a href="./README.zh.md"><img src="https://img.shields.io/badge/README-中文版本-red"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="./LICENSE"><img src="https://img.shields.io/badge/license-Apache--2.0-yellow"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="https://github.com/netease-youdao/EmotiVoice2"><img src="https://img.shields.io/badge/GitHub-EmotiVoice2-black?logo=github"></a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <br>
+
+        <p>Confucius4-TTS is an advanced LLM-based text-to-speech (TTS) system designed for multilingual and cross-lingual speech synthesis. Built on a speech encoder + large language model (LLM) architecture, Confucius4-TTS enables high-quality speech generation while preserving speaker identity across languages.</p>
+
+        <p><strong>✨ Key Features</strong></p>
+        <ul>
+            <li><strong>Multilingual &amp; Cross-Lingual TTS</strong>: Generate speech in multiple languages with a single model</li>
+            <li><strong>14 Languages Supported</strong>: Chinese, English, Japanese, Korean, German, French, Spanish, Indonesian, Italian, Thai, Portuguese, Russian, Malay and Vietnamese <em>(more coming soon)</em></li>
+            <li><strong>Unconstrained Voice Cloning</strong>: No Reference Transcript Required</li>
+            <li><strong>Native-Level Cross-Lingual Transfer</strong>: Unaccented Speech Synthesis</li>
+            <li><strong>Zero-Shot Voice Transfer</strong>: Clone voices without additional training</li>
+            <li><strong>Seamless Emotion Transfer</strong>: Clone the Feeling, Not Just the Voice</li>
+            <li><strong>Robust Generalization</strong>: Stable performance in real-world multilingual scenarios</li>
+        </ul>
+
+        <p>With strong cross-lingual generalization, Confucius4-TTS allows users to seamlessly switch languages while keeping the same voice, delivering fluent, natural, and expressive speech.</p>
+    </div>
+
+    <!-- Intra-lingual Page -->
+    <div class="demo-container">
+        <div class="text-center">
+            <h2>Intra-lingual</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover demo-table">
+                <thead>
+                    <tr>
+                        <th style="vertical-align:middle;text-align:center">Language</th>
+                        <th style="vertical-align:middle;text-align:center">Target Text</th>
+                        <th style="vertical-align:middle;text-align:center">Result</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">German</td>
+                        <td style="vertical-align:middle;text-align:center;">Nachdem der Damm 1963 erbaut worden war, kamen die jahreszeitlichen Überflutungen, die Sedimente im Fluss verteilen, zum Stillstand.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/de_fleurs_de_de_8665714398148335859-to-de.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">English</td>
+                        <td style="vertical-align:middle;text-align:center;">In 1990, it was added to the list of world heritage sites in danger, due to the threat of desert sands.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/en_fleurs_en_us_8395660467583137383-to-en.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Spanish</td>
+                        <td style="vertical-align:middle;text-align:center;">Se informó que los saqueos generalizados se extendieron toda la noche, dado que no hubo presencia policial en las calles de Bishkek.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/es_fleurs_es_419_18415054103001228749-to-es.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">French</td>
+                        <td style="vertical-align:middle;text-align:center;">On essaie encore de déterminer quelle a été l'ampleur de l'accident et comment la Terre sera affectée.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/fr_fleurs_fr_fr_16947476887667765210-to-fr.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Indonesian</td>
+                        <td style="vertical-align:middle;text-align:center;">Dua tahun setelah berakhirnya perang, bekas sekutu kini menjadi musuh dan Perang Dingin dimulai.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/id_fleurs_id_id_13048522247050988520-to-id.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Italian</td>
+                        <td style="vertical-align:middle;text-align:center;">Secondo la polizia, il corpo sembrava essere lì da un giorno circa.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/it_fleurs_it_it_3167969721432806085-to-it.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Japanese</td>
+                        <td style="vertical-align:middle;text-align:center;">でも、やっぱりこういうコンテンツ制作は続けることが一番大切ですよね。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_ja_40928196-to-ja_0.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Korean</td>
+                        <td style="vertical-align:middle;text-align:center;">해질녘 바다를 바라보던 노인은 60년 전 같은 해변에서 만났던 첫사랑을 떠올렸다.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_ko_41667661-to-ko_1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Portuguese</td>
+                        <td style="vertical-align:middle;text-align:center;">Creio que foi o sorriso, o sorriso foi quem abriu a porta. Era um sorriso com muita luz lá dentro, apetecia entrar nele, tirar a roupa, ficar nu dentro daquele sorriso.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_pt_42516697-to-pt_1.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Russian</td>
+                        <td style="vertical-align:middle;text-align:center;">Когда она открыла сундук, найденный в подвале дома своей бабушки, Мария обнаружила старый дневник, раскрывающий семейные тайны, хранившиеся на протяжении поколений.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_ru_40899850-to-ru_0.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Thai</td>
+                        <td style="vertical-align:middle;text-align:center;">รัฐบาลประกาศการลงทุนหลายพันล้านบาทเพื่อสร้างโรงเรียนและโรงพยาบาลในภูมิภาคที่ด้อยโอกาสของประเทศ</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_th_41460262-to-th_0.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Vietnamese</td>
+                        <td style="vertical-align:middle;text-align:center;">Sách nói là phương tiện tuyệt vời để khám phá những câu chuyện hay trong cuộc sống.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_vi_21965267-to-vi_0.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Chinese</td>
+                        <td style="vertical-align:middle;text-align:center;">我也是，不过下班后去健身房锻炼了一下，感觉好多了。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/prompt_common_voice_zh-CN_41697648-to-zh_0.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Malay</td>
+                        <td style="vertical-align:middle;text-align:center;">Sebuah kursus biasanya akan meliputi semua isu yang dibincang di sini dengan lebih terperinci, biasanya dengan pengalaman amali.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./intra_lingual/ms_fleurs_ms_my_11905645566001229462-to-ms.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Cross-lingual Page -->
+    <div class="demo-container">
+        <div class="text-center">
+            <h2>Cross-lingual</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover demo-table">
+                <thead>
+                    <tr>
+                        <th style="vertical-align:middle;text-align:center">Source Language</th>
+                        <th style="vertical-align:middle;text-align:center">Prompt</th>
+                        <th style="vertical-align:middle;text-align:center">Target Language</th>
+                        <th style="vertical-align:middle;text-align:center">Target Text</th>
+                        <th style="vertical-align:middle;text-align:center">Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- English Male -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4">English</td>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./cross_lingual/prompt/en_m.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">Chinese</td>
+                        <td style="vertical-align:middle;text-align:center;">至今为止，元气火箭总共发行了两张专辑。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/en_m-to-zh.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Japanese</td>
+                        <td style="vertical-align:middle;text-align:center;">アラバマ州の最大都市はバーミングハムである。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/en_m-to-ja.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Korean</td>
+                        <td style="vertical-align:middle;text-align:center;">바람은 파도 소리처럼 쏴아쏴아 하고 머리 맡에서 뒤설렌다.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/en_m-to-ko.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Russian</td>
+                        <td style="vertical-align:middle;text-align:center;">Неожиданно катастрофа приобрела глобальные масштабы.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/en_m-to-ru.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <!-- Chinese Female -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4">Chinese</td>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./cross_lingual/prompt/zh_f.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">English</td>
+                        <td style="vertical-align:middle;text-align:center;">Hey look, a flying pig!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/zh_f-to-en.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Japanese</td>
+                        <td style="vertical-align:middle;text-align:center;">アラバマ州の最大都市はバーミングハムである。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/zh_ja_whm.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Korean</td>
+                        <td style="vertical-align:middle;text-align:center;">바람은 파도 소리처럼 쏴아쏴아 하고 머리 맡에서 뒤설렌다.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/zh_f-to-ko.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Russian</td>
+                        <td style="vertical-align:middle;text-align:center;">Неожиданно катастрофа приобрела глобальные масштабы.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/zh_f-to-ru.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <!-- Korean Female -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4">Korean</td>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./cross_lingual/prompt/ko_f.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">English</td>
+                        <td style="vertical-align:middle;text-align:center;">Hey look, a flying pig!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ko_f-to-en.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">French</td>
+                        <td style="vertical-align:middle;text-align:center;">De manière informelle, la capacité d'un modèle de classification correspond à sa complexité.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ko_f-to-fr.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Russian</td>
+                        <td style="vertical-align:middle;text-align:center;">Неожиданно катастрофа приобрела глобальные масштабы.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ko_f-to-ru.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Chinese</td>
+                        <td style="vertical-align:middle;text-align:center;">至今为止，元气火箭总共发行了两张专辑。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ko_f-to-zh.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <!-- Japanese Male -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4">Japanese</td>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./cross_lingual/prompt/ja_m.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">English</td>
+                        <td style="vertical-align:middle;text-align:center;">Hey look, a flying pig!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ja_m-to-en.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">French</td>
+                        <td style="vertical-align:middle;text-align:center;">De manière informelle, la capacité d'un modèle de classification correspond à sa complexité.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ja_m-to-fr.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Russian</td>
+                        <td style="vertical-align:middle;text-align:center;">Неожиданно катастрофа приобрела глобальные масштабы.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ja_m-to-ru.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Chinese</td>
+                        <td style="vertical-align:middle;text-align:center;">至今为止，元气火箭总共发行了两张专辑。</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./cross_lingual/ja_m-to-zh.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Emotion Transfer Page -->
+    <div class="demo-container">
+        <div class="text-center">
+            <h2>Emotion Transfer</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover demo-table">
+                <thead>
+                    <tr>
+                        <th style="vertical-align:middle;text-align:center">Prompt</th>
+                        <th style="vertical-align:middle;text-align:center">Target Language</th>
+                        <th style="vertical-align:middle;text-align:center">Target Text</th>
+                        <th style="vertical-align:middle;text-align:center">Results</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- voice_03 -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./emotion/voice_03.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">Chinese</td>
+                        <td style="vertical-align:middle;text-align:center;">这个呀，就是我们精心制作准备的纪念品，大家可以看到这个色泽和这个材质啊，哎呀多么的光彩照人!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_zh_01_m纪念品.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Korean</td>
+                        <td style="vertical-align:middle;text-align:center;">이것이 바로 저희가 정성껏 준비한 기념품입니다. 보시다시피 색감과 재질이 정말 눈부시게 빛나네요.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_ko_01_m纪念品.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Vietnamese</td>
+                        <td style="vertical-align:middle;text-align:center;">Đây chính là món lưu niệm chúng tôi tỉ mỉ chế tác và chuẩn bị. Các bạn có thể thấy sắc màu cùng chất liệu này, thật sự rực rỡ óng ánh quá.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_vi_01_m纪念品.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Thai</td>
+                        <td style="vertical-align:middle;text-align:center;">นี่คือของที่ระลึกที่เราตั้งใจประดิษฐ์และเตรียมมาให้ทุกคนได้ชื่นชมกันนะครับ อย่างที่เห็นสีสันและวัสดุนี้มันช่างสวยงามวิบวับจริงๆ</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_th_01_m纪念品.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <!-- voice_01 -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./emotion/voice_01.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">English</td>
+                        <td style="vertical-align:middle;text-align:center;">Translate for me, what is a surprise!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_en_01_translate.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Japanese</td>
+                        <td style="vertical-align:middle;text-align:center;">これを訳してくれ、なんと驚いたことだ！</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_ja_01_translate.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">German</td>
+                        <td style="vertical-align:middle;text-align:center;">Übersetze das für mich, was für eine Überraschung!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_de_01_translate.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">French</td>
+                        <td style="vertical-align:middle;text-align:center;">Traduis ça pour moi, quelle surprise !</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_fr_01_translate.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <!-- voice_02 -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./emotion/voice_02.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">Vietnamese</td>
+                        <td style="vertical-align:middle;text-align:center;">Cung đình nghiêm ngặt, cấm đồn đại phiến, quý phi Tề!</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_vi_01_palace.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Thai</td>
+                        <td style="vertical-align:middle;text-align:center;">วังนี้มีระเบียบเข้มงวด ห้ามข่าวลวงสู่ใด เลดี้ฉี</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_th_01_palace.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Indonesian</td>
+                        <td style="vertical-align:middle;text-align:center;">Istana sangat tegas, dilarang menyebarkan kabar palsu, Nona Qi</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_id_01_palace.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Malay</td>
+                        <td style="vertical-align:middle;text-align:center;">Istana ini amat ketat, tiada khabar palsu dibenarkan, Puan Qi</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_ms_01_palace.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <!-- emo_sad -->
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center" rowspan="4"><audio controls="controls"><source src="./emotion/emo_sad.wav" type="audio/wav"></audio></td>
+                        <td style="vertical-align:middle;text-align:center">Russian</td>
+                        <td style="vertical-align:middle;text-align:center;">Все эти годы были потрачены зря.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_ru_01_years.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Spanish</td>
+                        <td style="vertical-align:middle;text-align:center;">Al final, todos estos años han sido en vano.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_es_01_years.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Italian</td>
+                        <td style="vertical-align:middle;text-align:center;">Tutti questi anni sono stati sprecati alla fine.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_it_01_years.wav" type="audio/wav"></audio></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align:middle;text-align:center">Portuguese</td>
+                        <td style="vertical-align:middle;text-align:center;">Todos esses anos acabaram sendo desperdiçados.</td>
+                        <td style="vertical-align:middle;text-align:center"><audio controls="controls"><source src="./emotion/test_pt_01_years.wav" type="audio/wav"></audio></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
